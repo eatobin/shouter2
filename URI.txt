@@ -1,0 +1,27 @@
+URI:
+  Parsed JDBC connection string - see below
+
+String:
+  subprotocol://user:password@host:post/subname
+               An optional prefix of jdbc: is allowed.
+
+
+String url = "jdbc:postgresql://localhost/test?user=fred&password=secret&ssl=true";
+String url = "postgresql://localhost:5432/shouter?user=ericky&password=ericky";
+
+OR!!
+
+(def db-spec
+  {:dbtype "postgresql"
+   :dbname "shouter"
+   :user "ericky"
+   :password "ericky"})
+=> #'user/db-spec
+(sql/query db-spec ["select 3*5 as result"])
+=> ({:result 15})
+(sql/db-do-commands db-spec
+                    (sql/create-table-ddl :testing [[:data :text]]))
+=> (0)
+(sql/db-do-commands db-spec
+             "drop table testing")
+=> (0)
