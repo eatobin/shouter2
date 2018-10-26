@@ -1,0 +1,22 @@
+[eric@linux-x2vq shouter2]$ heroku create
+Creating app... done, ⬢ immense-stream-36302
+https://immense-stream-36302.herokuapp.com/ | https://git.heroku.com/immense-stream-36302.git
+[eric@linux-x2vq shouter2](master)$ heroku addons:create heroku-postgresql
+Creating heroku-postgresql on ⬢ immense-stream-36302... free
+Database has been created and is available
+ ! This database is empty. If upgrading, you can transfer
+ ! data from another database with pg:copy
+Created postgresql-rigid-32001 as DATABASE_URL
+Use heroku addons:docs heroku-postgresql to view documentation
+[eric@linux-x2vq shouter2](master)$ heroku ps:scale web=1
+Scaling dynos... done, now running web at 1:Free
+[eric@linux-x2vq shouter2](master)$ heroku ps
+Free dyno hours quota remaining this month: 997h 35m (99%)
+Free dyno usage for this app: 0h 0m (0%)
+For more information on dyno sleeping and how to upgrade, see:
+https://devcenter.heroku.com/articles/dyno-sleeping
+
+=== web (Free): java $JVM_OPTS -jar target/shouter-standalone.jar (1)
+web.1: up 2018/10/26 15:34:45 -0500 (~ 35s ago)
+
+[eric@linux-x2vq shouter2](master)$ heroku open
