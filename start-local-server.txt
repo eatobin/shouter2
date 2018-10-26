@@ -1,0 +1,5 @@
+lein uberjar
+
+java $JVM_OPTS -jar target/shouter-standalone.jar
+
+http://localhost:8080
